@@ -6,6 +6,9 @@ from .models import Budget,Warga
 from .forms import BudgetForm,WargaForm
 
 # Create your views here.
+
+def index(request):
+    return render(request,"awal.html")
 @csrf_exempt
 def halaman_budget(request):
     if request.method=='GET':
