@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse,JsonResponse
 from django.template import loader
 from .models import Budget,Warga
-from .forms import BudgetForm
+from .forms import BudgetForm,WargaForm
 
 # Create your views here.
 @csrf_exempt
@@ -34,6 +34,20 @@ def isi_budget(request):
             satuan = form.cleaned_data['satuan']
             harga = form.cleaned_data['harga']
             d = Budget(nama=nama_barang,harga=harga,satuan=satuan)
+            d.save()
+            return HttpResponse("Form Diterima")
+        else:
+            return HttpResponse("Form gagal")
+def isi_komentar(request):
+    if request.method=='GET':
+        form =  WargaForm().as_p()
+        return render(request,'tambah_komentar.html',{'form':form})
+    else:
+        form=WargaForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            komentar = form.cleaned_data['komentar']
+            d = Warga(username=username,komentar=komentar)
             d.save()
             return HttpResponse("Form Diterima")
         else:
