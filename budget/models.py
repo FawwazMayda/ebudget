@@ -5,6 +5,7 @@ class Budget(models.Model):
     nama = models.CharField(max_length=200)
     harga = models.IntegerField()
     satuan = models.IntegerField()
+    status = models.CharField(max_length=50,default="----")
 
     def __str__(self):
         return "{nama} {harga} {satuan}".format(nama=self.nama,harga=self.harga,satuan=self.satuan)
