@@ -277,7 +277,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Langkah Memasukkan Anggaran Pendapatan dan Belanja Daerah</h4>
                                     <h6 class="card-subtitle">Silakan masukkan data dengan benar</h6>
-                                    <form action="#" class="validation-wizard wizard-circle">
+                                    <form action="/ebudget/inputanggaran/" method='post' class="validation-wizard wizard-circle">
                                         <!-- Step 1 -->
                                         <h6>Detail Kegiatan</h6>
                                         <section>
@@ -397,24 +397,33 @@
                                         <!-- Step 3 -->
                                         <h6>Input Anggaran</h6>
                                         <section>
-                                            <div class="col-md-12">
+                                                <form action="/ebudget/inputanggaran/" method="post">
+                                                    {% csrf_token %}
+                                                    {{ form }}
+                                                    <input type="submit" value="Submit">
+                                                </form>
+
+                                            <!-- <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="namabarang"> Nama Barang : <span class="danger">*</span> </label>
-                                                    <input type="text" class="form-control required" id="namabarang">
+                                                    {{form.nama_barang.errors}}
+                                                    <label for="{{form.nama_barang.id_for_label}}"> Nama Barang : <span class="danger">*</span> </label>
+                                                    {{form.nama_barang}}
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="satuanbarang"> Satuan (jumlah barang) : <span class="danger">*</span> </label>
-                                                    <input type="text" class="form-control required" id="satuanbarang">
+                                                    {{form.satuan.errors}}
+                                                    <label for="{{form.satuan.id_for_label}}"> Satuan (jumlah barang) : <span class="danger">*</span> </label>
+                                                    {{form.satuan}}
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="hargabarang"> Harga (Rp) : <span class="danger">*</span> </label>
-                                                    <input type="text" class="form-control required" id="hargabarang">
+                                                    {{form.harga.errors}}
+                                                    <label for="{{form.harga.id_for_label}}"> Harga (Rp) : <span class="danger">*</span> </label>
+                                                    {{form.harga}}
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </section>
                                     </form>
                                 </div>

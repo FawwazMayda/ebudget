@@ -55,9 +55,29 @@ def kegiatan(request):
     context = {'Budgets':budget_list}
     return render(request,'kegiatan.html',context)
 
-    
+
 def inputanggaran(request):
-    return render(request, 'inputanggaran.html')
+    if request.method=='GET':
+        form = BudgetForm().as_p()
+        context = {'form':form}
+        return render(request, 'inputanggaran.html',context)
+    else:
+        form = BudgetForm(request.POST)
+        if form.is_valid():
+            nama_barang = form.cleaned_data['nama_barang']
+            satuan = form.cleaned_data['satuan']
+            harga = form.cleaned_data['harga']
+            #siswa = int(form.cleaned_data['inventaris_siswa'])
+            #guru = int(form.cleaned_data['inventaris_guru'])
+            #sekolah = int(form.cleaned_data['inventaris_sekolah'])
+            #status = An.cek_nama(nama_barang) 
+            #status = An.cek_harga(satuan,harga,siswa,guru,sekolah,0.4)
+            status = "Preiksa Data"
+            d = Budget(nama=nama_barang,harga=harga,satuan=satuan,status=status)
+            d.save()
+            #return HttpResponse("Form Diterima")
+            return HttpResponseRedirect("/ebudget/indexadmin")
+
 @csrf_exempt
 def halaman_budget(request):
     if request.method=='GET':
