@@ -48,8 +48,14 @@ def login_pegawai_otp(request):
 
 def indexadmin(request):
     return render(request,'indexadmin.html')
+
+
 def kegiatan(request):
-    return render(request,'kegiatan.html')
+    budget_list = Budget.objects.all()
+    context = {'Budgets':budget_list}
+    return render(request,'kegiatan.html',context)
+
+    
 def inputanggaran(request):
     return render(request, 'inputanggaran.html')
 @csrf_exempt

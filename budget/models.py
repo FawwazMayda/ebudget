@@ -9,6 +9,8 @@ class Budget(models.Model):
 
     def __str__(self):
         return "{nama} {harga} {satuan}".format(nama=self.nama,harga=self.harga,satuan=self.satuan)
+    def total(self):
+        return self.satuan*self.harga
 
 class Warga(models.Model):
     username = models.CharField(max_length=200)
