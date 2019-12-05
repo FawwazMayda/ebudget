@@ -11,7 +11,15 @@ import os
 print(os.listdir())
 #An = Anomali()
 def index(request):
-    return render(request,"awal.html")
+    return render(request,"landing_page.html")
+def login_pegawai(request):
+    return render(request,'login_pegawai.html')
+def indexadmin(request):
+    return render(request,'indexadmin.html')
+def kegiatan(request):
+    return render(request,'kegiatan.html')
+def inputanggaran(request):
+    return render(request, 'inputanggaran.html')
 @csrf_exempt
 def halaman_budget(request):
     if request.method=='GET':
