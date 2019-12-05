@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from django.template import loader
 from .models import Budget,Warga
 from .forms import BudgetForm,WargaForm
@@ -38,7 +38,8 @@ def isi_budget(request):
             harga = form.cleaned_data['harga']
             d = Budget(nama=nama_barang,harga=harga,satuan=satuan)
             d.save()
-            return HttpResponse("Form Diterima")
+            #return HttpResponse("Form Diterima")
+            return HttpResponseRedirect("/ebudget")
         else:
             return HttpResponse("Form gagal")
 def isi_komentar(request):
@@ -52,6 +53,7 @@ def isi_komentar(request):
             komentar = form.cleaned_data['komentar']
             d = Warga(username=username,komentar=komentar)
             d.save()
-            return HttpResponse("Form Diterima")
+            #return HttpResponse("Form Diterima")
+            return HttpResponseRedirect("/ebudget")
         else:
             return HttpResponse("Form gagal")
