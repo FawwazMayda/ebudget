@@ -39,9 +39,9 @@
                 <span class="login100-form-title p-b-41">
                     <img src="{% static 'landingpage/images/logos/jakarta_logo.png' %}" style="width:100px;height:100px;";>
                 </span>
-				<form class="login100-form validate-form p-b-33 p-t-5" action="/ebudget/login_pegawai/" method='post'>
+				<form class="login100-form validate-form p-b-33 p-t-5" action="/ebudget/login_pegawai_otp/" method='post'>
                     <div class="login100-form-sub p-b-5 p-t-20">
-                        Sign in untuk masuk
+                        OTP untuk masuk
                     </div>
 					<!-- <div class="wrap-input100 validate-input" data-validate = "Enter Kode SKPD atau ID User">
 						<input class="input100" type="text" style="font-size: medium;" name="id_user" placeholder="Kode SKPD atau ID User">
@@ -50,17 +50,17 @@
 					<div class="wrap-input100 validate-input" data-validate = "Nomor Telepon untuk verifikasi">
 						<input class="input100" type="text" style="font-size: medium;" name="phonenumber" placeholder="Nomor Telepon untuk verifikasi">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
-					</div> -->
-					<form action="/ebudget/login_pegawai/" method="post">
-						{% csrf_token %}
-						{{ form }}
-						<input type="submit" value="Submit">
-					</form>
+					</div>
 
-					<!-- <div class="container-login100-form-btn m-t-32">
+					<div class="container-login100-form-btn m-t-32">
 						<button class="login100-form-btn">
 							Login
 						</button> -->
+						<form action="/ebudget/login_pegawai_otp/" method="post">
+							{% csrf_token %}
+							{{ form }}
+							<input type="submit" value="Submit">
+						</form>
 					</div>
 
 				</form>

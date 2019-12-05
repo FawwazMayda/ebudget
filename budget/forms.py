@@ -11,3 +11,8 @@ class BudgetForm(forms.Form):
 class WargaForm(forms.Form):
     username = forms.CharField(max_length=200)
     komentar = forms.CharField(max_length=800)
+class MintaOTPForm(forms.Form):
+    skpd = forms.CharField(max_length=200)
+    nohp = forms.CharField(max_length=200)
+class VerifOTPForm(forms.Form):
+    otp = forms.CharField(max_length=200)

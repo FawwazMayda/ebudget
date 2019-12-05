@@ -2,7 +2,7 @@ import requests
 import json
 url0 = 'https://api.thebigbox.id/sms-otp/1.0.0/otp/32/' #PUT
 url1 = 'https://api.thebigbox.id/sms-otp/1.0.0/otp/32/verifications' #POST
-api_key = "3tqkUH1dNdQznlqCDO3hOWvvvddihjBZ"
+api_key = "PCutZcxCx9s3QT2sNKc87rS7toHkpL55"
 phone = "+6285248475103"
 header = {
   'Content-type':"application/json",

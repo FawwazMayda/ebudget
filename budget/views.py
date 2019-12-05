@@ -3,17 +3,49 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from django.template import loader
 from .models import Budget,Warga
-from .forms import BudgetForm,WargaForm
+from .forms import BudgetForm,WargaForm,MintaOTPForm,VerifOTPForm
+from .otp import makeOTP,verifyOTP,setPhone
 #from .anomali import Anomali
 
 # Create your views here
 import os
 print(os.listdir())
+key=21
 #An = Anomali()
 def index(request):
     return render(request,"landing_page.html")
+
 def login_pegawai(request):
-    return render(request,'login_pegawai.html')
+    if request.method=='GET':
+        #Minta halaman Login
+        form = MintaOTPForm()
+        context = {'form':form}
+        return render(request,'login_pegawai.html',context)
+    else:
+        form = MintaOTPForm(request.POST)
+        if form.is_valid():
+            form2 = VerifOTPForm()
+            context2 = {'form':form2}
+            skpd = form.cleaned_data['skpd']
+            nohp = form.cleaned_data['nohp']
+            setPhone(nohp)
+            res0 = makeOTP(key)
+            print(res0.json())
+            return render(request,'login_pegawai_otp.html',context2)
+
+def login_pegawai_otp(request):
+    if request.method=='POST':
+        form = VerifOTPForm(request.POST)
+        if form.is_valid():
+            otp = form.cleaned_data['otp']
+            res1 = verifyOTP(key,otp).json()
+            print(res1)
+            if res1['status']==True:
+                return HttpResponseRedirect("/ebudget/indexadmin")
+            else:
+                return HttpResponseRedirect("/ebudget/")
+
+
 def indexadmin(request):
     return render(request,'indexadmin.html')
 def kegiatan(request):
