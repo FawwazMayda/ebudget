@@ -69,12 +69,17 @@ def inputanggaran(request):
             nama_barang = form.cleaned_data['nama_barang']
             satuan = form.cleaned_data['satuan']
             harga = form.cleaned_data['harga']
-            #siswa = int(form.cleaned_data['inventaris_siswa'])
-            #guru = int(form.cleaned_data['inventaris_guru'])
-            #sekolah = int(form.cleaned_data['inventaris_sekolah'])
-            #status = An.cek_nama(nama_barang) 
-            #status = An.cek_harga(satuan,harga,siswa,guru,sekolah,0.4)
-            status = "Periksa Data"
+            siswa = int(form.cleaned_data['inventaris_siswa'])
+            guru = int(form.cleaned_data['inventaris_guru'])
+            sekolah = int(form.cleaned_data['inventaris_sekolah'])
+            status_nama = An.cek_nama(nama_barang) 
+            status_harga = An.cek_harga(satuan,harga,siswa,guru,sekolah,0.4)
+            if status_nama=='Anomali Barang':
+                status = 'Anomali barang'
+            elif status_harga=='Anomali harga':
+                status= ' Anomali harga'
+            else:
+                status = 'Normal'
             d = Budget(nama=nama_barang,harga=harga,satuan=satuan,status=status)
             d.save()
             #return HttpResponse("Form Diterima")

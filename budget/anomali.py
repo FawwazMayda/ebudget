@@ -80,7 +80,7 @@ class Anomali():
         normb = np.linalg.norm(b)
         return cos/(norma*normb)
 
-    def cek_harga(self,satuan,harga,inventaris_siswa,inventaris_guru,inventaris_sekolah,epsilon):
+    def cek_harga(self,satuan,harga,inventaris_siswa,inventaris_guru,inventaris_sekolah,epsilon=0.3):
         satuan = np.array([satuan])
         harga = np.array([harga])
         satuan = np.log(satuan)
