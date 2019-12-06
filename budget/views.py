@@ -58,7 +58,7 @@ def kegiatan(request):
 
 def inputanggaran(request):
     if request.method=='GET':
-        form = BudgetForm().as_p()
+        form = BudgetForm()
         print("Input Get")
         context = {'form':form}
         return render(request, 'inputanggaran.html',context)
@@ -79,6 +79,8 @@ def inputanggaran(request):
             d.save()
             #return HttpResponse("Form Diterima")
             return HttpResponseRedirect("/ebudget/indexadmin")
+        else:
+            return HttpResponse("Form tidak Valid")
 
 @csrf_exempt
 def halaman_budget(request):
