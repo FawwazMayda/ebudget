@@ -43,7 +43,7 @@ class Anomali():
         self.st_satuan = joblib.load("./budget/scaler_satuan.pkl")
         #self.autoenco = self.bikin_model(alamat_weights)
         #self.embed = model
-        #self.embed= ft.load_model('./budget/cc.id.300.bin')
+        self.embed= ft.load_model('./budget/cc.id.300.bin')
 
     def cek_nama(self,nama,epsilon=0.3):
         nama = nama.lower()
