@@ -397,33 +397,58 @@
                                         <!-- Step 3 -->
                                         <h6>Input Anggaran</h6>
                                         <section>
-                                                <form action="/ebudget/inputanggaran/" method="post">
+                                                <!-- <form action="/ebudget/inputanggaran/" method="post">
                                                     {% csrf_token %}
                                                     {{ form }}
                                                     <input type="submit" value="Submit">
-                                                </form>
-
-                                            <!-- <div class="col-md-12">
-                                                <div class="form-group">
-                                                    {{form.nama_barang.errors}}
-                                                    <label for="{{form.nama_barang.id_for_label}}"> Nama Barang : <span class="danger">*</span> </label>
-                                                    {{form.nama_barang}}
+                                                </form> -->
+                                                {% csrf_token %}
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="{{form.nama_barang.id_for_label}}"> Nama Barang <span class="danger">*</span> </label>
+                                                        <input type="text" class="form-control required" id="">
+                                                        {{form.nama_barang}}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    {{form.satuan.errors}}
-                                                    <label for="{{form.satuan.id_for_label}}"> Satuan (jumlah barang) : <span class="danger">*</span> </label>
-                                                    {{form.satuan}}
+                                                
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="{{form.harga.id_for_label}}"> Harga <span class="danger">*</span> </label>
+                                                        <input type="text" class="form-control required" id="">
+                                                        {{form.harga}}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    {{form.harga.errors}}
-                                                    <label for="{{form.harga.id_for_label}}"> Harga (Rp) : <span class="danger">*</span> </label>
-                                                    {{form.harga}}
+                                                <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="{{form.satuan.id_for_label}}"> Satuan <span class="danger">*</span> </label>
+                                                            <input type="text" class="form-control required" id="">
+                                                            {{form.satuan}}
+                                                        </div>
+                                                    </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Parameter :</label>
+                                                        <div class="c-inputs-stacked">
+                                                            <label class="inline custom-control custom-checkbox block">
+                                                                <input type="checkbox" for="{{form.inventaris_siswa.id_for_label}}" class="custom-control-input"> Inventaris Siswa <span class="custom-control-label ml-0">*</span> </label>
+                                                                    {{form.inventaris_siswa}}
+                                                            </label>
+                                                        </div>
+                                                        <div class="c-inputs-stacked">
+                                                            <label class="inline custom-control custom-checkbox block">
+                                                                <input type="checkbox" for="{{form.inventaris_guru.id_for_label}}" class="custom-control-input"> Inventaris Guru <span class="custom-control-label ml-0">*</span> </label>
+                                                                    {{form.inventaris_guru}}
+                                                            </label>
+                                                        </div> 
+                                                        <div class="c-inputs-stacked">
+                                                            <label class="inline custom-control custom-checkbox block">
+                                                                <input type="checkbox" for="{{form.inventaris_sekolah.id_for_label}}" class="custom-control-input"> Inventaris Sekolah <span class="custom-control-label ml-0">*</span> </label>
+                                                                    {{form.inventaris_sekolah}}
+                                                            </label>
+                                                        </div>                                                    
+                                                    </div>
                                                 </div>
-                                            </div> -->
+                                                <input type="submit" value="Submit">
                                         </section>
                                     </form>
                                 </div>

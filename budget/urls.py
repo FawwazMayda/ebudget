@@ -12,5 +12,4 @@ urlpatterns = [
     path('warga_detail/',views.all_warga,name='all_warga'),
     path('tambah_budget/',views.isi_budget,name='isi_budget'),
     path('tambah_komentar/',views.isi_komentar,name='isi_komentar')
-
 ]
